@@ -9,6 +9,8 @@ public class Product implements Serializable{
 	private String machinecode; //機械コード
 	private int    workmannumber; //作業担当者
 	private String workinghours; //日勤夜勤区分
+	private String partnumber; //品番
+	private String partname; //品名
 	private String sparepartnumber1; //予備品番1
 	private String sparepartnumber2; //予備品番2
 	private String sparepartnumber3; //予備品番3
@@ -18,11 +20,11 @@ public class Product implements Serializable{
 	private int    totalnumberdefects; //合計不良数
 	private String remarks; //備考
 	private String defectclassificationcode1; //不良分類コード1
-	private int    numberdefects1; //不良数1
+	private String numberdefects1; //不良数1
 	private String defectclassificationcode2; //不良分類コード2
-	private int    numberdefects2; //不良数2
+	private String numberdefects2; //不良数2
 	private String defectclassificationcode3; //不良分類コード3
-	private int    numberdefects3; //不良数3
+	private String numberdefects3; //不良数3
 	private String defectclassificationcode4; //不良分類コード4
 	private String numberdefects4; //不良数4
 	private String defectclassificationcode5; //不良分類コード5
@@ -38,17 +40,19 @@ public class Product implements Serializable{
 	private String sparenumberdefects1; //予備不良数1
 	private String sparenumberdefects2; //予備不良数2
 	private String sparenumberdefects3; //予備不良数3
+	private String takenumber; //取り数
+	private String partnumber_check; //品名 確認用
 	
 	public Product(){}
 	public Product(int flag,int arrangementnumber,String workperformancedate,String machinecode,int workmannumber,String workinghours,
-			String sparepartnumber1,String sparepartnumber2,String sparepartnumber3,
+			String partnumber,String partname,String sparepartnumber1,String sparepartnumber2,String sparepartnumber3,
 			float workmantime,float machinetime,int numbernodefectiveproducts,int totalnumberdefects,String remarks,
-			String defectclassificationcode1,int numberdefects1,String defectclassificationcode2,int numberdefects2,
-			String defectclassificationcode3,int numberdefects3,String defectclassificationcode4,String numberdefects4,
+			String defectclassificationcode1,String numberdefects1,String defectclassificationcode2,String numberdefects2,
+			String defectclassificationcode3,String numberdefects3,String defectclassificationcode4,String numberdefects4,
 			String defectclassificationcode5,String numberdefects5,String defectclassificationcode6,String numberdefects6,
 			String defectclassificationcode7,String numberdefects7,String defectclassificationcode8,String numberdefects8,
 			String defectclassificationcode9,String numberdefects9,
-			String sparenumberdefects1,String sparenumberdefects2,String sparenumberdefects3){
+			String sparenumberdefects1,String sparenumberdefects2,String sparenumberdefects3,String takenumber,String partnumber_check){
 		
 		this.flag=flag;
 		this.arrangementnumber=arrangementnumber;
@@ -56,6 +60,8 @@ public class Product implements Serializable{
 		this.machinecode=machinecode;
 		this.workmannumber=workmannumber;
 		this.workinghours=workinghours;
+		this.partnumber=partnumber;
+		this.partname=partname;
 		this.sparepartnumber1=sparepartnumber1;
 		this.sparepartnumber2=sparepartnumber2;
 		this.sparepartnumber3=sparepartnumber3;
@@ -85,26 +91,28 @@ public class Product implements Serializable{
 		this.sparenumberdefects1=sparenumberdefects1;
 		this.sparenumberdefects2=sparenumberdefects2;
 		this.sparenumberdefects3=sparenumberdefects3;
+		this.takenumber=takenumber;
+		this.partnumber_check=partnumber_check;
 	}
 	public Product(int id,int flag,int arrangementnumber,String workperformancedate,String machinecode,int workmannumber,String workinghours,
-			String sparepartnumber1,String sparepartnumber2,String sparepartnumber3,float workmantime,float machinetime,int numbernodefectiveproducts,
+			String partnumber,String partname,String sparepartnumber1,String sparepartnumber2,String sparepartnumber3,float workmantime,float machinetime,int numbernodefectiveproducts,
 			int totalnumberdefects,String remarks,
-			String defectclassificationcode1,int numberdefects1,String defectclassificationcode2,int numberdefects2,
-			String defectclassificationcode3,int numberdefects3,String defectclassificationcode4,String numberdefects4,
+			String defectclassificationcode1,String numberdefects1,String defectclassificationcode2,String numberdefects2,
+			String defectclassificationcode3,String numberdefects3,String defectclassificationcode4,String numberdefects4,
 			String defectclassificationcode5,String numberdefects5,String defectclassificationcode6,String numberdefects6,
 			String defectclassificationcode7,String numberdefects7,String defectclassificationcode8,String numberdefects8,
 			String defectclassificationcode9,String numberdefects9,
-			String sparenumberdefects1,String sparenumberdefects2,String sparenumberdefects3){
+			String sparenumberdefects1,String sparenumberdefects2,String sparenumberdefects3,String takenumber,String partnumber_check){
 		
 		this(flag,arrangementnumber,workperformancedate,machinecode,workmannumber,workinghours,
-		        sparepartnumber1,sparepartnumber2,sparepartnumber3,workmantime,
+				partnumber,partname,sparepartnumber1,sparepartnumber2,sparepartnumber3,workmantime,
 				machinetime,numbernodefectiveproducts,totalnumberdefects,remarks,
 				defectclassificationcode1,numberdefects1,defectclassificationcode2,numberdefects2,
 				defectclassificationcode3,numberdefects3,defectclassificationcode4,numberdefects4,
 				defectclassificationcode5,numberdefects5,defectclassificationcode6,numberdefects6,
 				defectclassificationcode7,numberdefects7,defectclassificationcode8,numberdefects8,
 				defectclassificationcode9,numberdefects9,
-				sparenumberdefects1,sparenumberdefects2,sparenumberdefects3);
+				sparenumberdefects1,sparenumberdefects2,sparenumberdefects3,takenumber,partnumber_check);
 		this.id=id;
 	}
 	public int getId() {
@@ -148,6 +156,18 @@ public class Product implements Serializable{
 	}
 	public void setWorkinghours(String workinghours) {
 		this.workinghours = workinghours;
+	}
+	public String getPartnumber() {
+		return partnumber;
+	}
+	public void setPartnumber(String partnumber) {
+		this.partnumber = partnumber;
+	}
+	public String getPartname() {
+		return partname;
+	}
+	public void setPartname(String partname) {
+		this.partname = partname;
 	}
 	public String getSparepartnumber1() {
 		return sparepartnumber1;
@@ -203,10 +223,10 @@ public class Product implements Serializable{
 	public void setDefectclassificationcode1(String defectclassificationcode1) {
 		this.defectclassificationcode1 = defectclassificationcode1;
 	}
-	public int getNumberdefects1() {
+	public String getNumberdefects1() {
 		return numberdefects1;
 	}
-	public void setNumberdefects1(int numberdefects1) {
+	public void setNumberdefects1(String numberdefects1) {
 		this.numberdefects1 = numberdefects1;
 	}
 	public String getDefectclassificationcode2() {
@@ -215,10 +235,10 @@ public class Product implements Serializable{
 	public void setDefectclassificationcode2(String defectclassificationcode2) {
 		this.defectclassificationcode2 = defectclassificationcode2;
 	}
-	public int getNumberdefects2() {
+	public String getNumberdefects2() {
 		return numberdefects2;
 	}
-	public void setNumberdefects2(int numberdefects2) {
+	public void setNumberdefects2(String numberdefects2) {
 		this.numberdefects2 = numberdefects2;
 	}
 	public String getDefectclassificationcode3() {
@@ -227,10 +247,10 @@ public class Product implements Serializable{
 	public void setDefectclassificationcode3(String defectclassificationcode3) {
 		this.defectclassificationcode3 = defectclassificationcode3;
 	}
-	public int getNumberdefects3() {
+	public String getNumberdefects3() {
 		return numberdefects3;
 	}
-	public void setNumberdefects3(int numberdefects3) {
+	public void setNumberdefects3(String numberdefects3) {
 		this.numberdefects3 = numberdefects3;
 	}
 	public String getDefectclassificationcode4() {
@@ -323,4 +343,17 @@ public class Product implements Serializable{
 	public void setSparenumberdefects3(String sparenumberdefects3) {
 		this.sparenumberdefects3 = sparenumberdefects3;
 	}
+	public String getTakenumber() {
+		return takenumber;
+	}
+	public void setTakenumber(String takenumber) {
+		this.takenumber = takenumber;
+	}
+	public String getPartnumber_check() {
+		return partnumber_check;
+	}
+	public void setPartnumber_check(String partnumber_check) {
+		this.partnumber_check = partnumber_check;
+	}
+
 }
